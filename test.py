@@ -6,20 +6,11 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
 class Block(pygame.sprite.Sprite):
-    def __init__(self, color, width, height, isPlayer):
+    def __init__(self, color, width, height):
         super().__init__()
         self.image = pygame.Surface([width, height])
         self.image.fill(color)
         self.rect = self.image.get_rect()
-        self.player = isPlayer
-        self.x_vel = random.randrange(-2, 2)
-        self.y_vel = random.randrange(-2, 2)
-
-    def moveBlock(self):
-        if self.player == false:
-            self.rect.x += slef.x_ve l
-            self.rect.x += slef.y_vel
-    
 
 pygame.init()
 
@@ -31,7 +22,7 @@ block_list = pygame.sprite.Group()
 all_sprites_list = pygame.sprite.Group()
 
 for i in range(50):
-    block = Block(BLACK, 20, 15, False)
+    block = Block(BLACK, 20, 15)
     block.rect.x = random.randrange(screen_width)
     block.rect.y = random.randrange(screen_height)
     block_list.add(block)
@@ -47,22 +38,19 @@ score = 0
 
 while not done:
     for event in pygame.event.get():
-    if event.type == pygame.QUIT:
-    done = True
+        if event.type == pygame.QUIT:
+            done = True
 
 screen.fill(WHITE)
 pos = pygame.mouse.get_pos()
 player.rect.x = pos[0]
 player.rect.y = pos[1]
 
-for block in all_sprites_list:
-    block.
-
 blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
 
 for block in blocks_hit_list:
-score += 1
-print(score)
+    score += 1
+    print(score)
 
 all_sprites_list.draw(screen)
 pygame.display.flip()
