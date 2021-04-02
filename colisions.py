@@ -17,7 +17,7 @@ class Block(pygame.sprite.Sprite):
 
     def moveBlock(self):
         if self.player == false:
-            self.rect.x += slef.x_ve l
+            self.rect.x += slef.x_vel
             self.rect.x += slef.y_vel
     
 
