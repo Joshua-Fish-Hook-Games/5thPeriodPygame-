@@ -91,11 +91,13 @@ while not done:
     for block in all_sprites_list:
         block.update()
 
+    for bullert in bullet_list:
     blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
-
-    for block in blocks_hit_list:
-        score += 1
-        print(score)
+        for block in blocks_hit_list:
+            bullet_list.remove(bullet)
+            all_sprites_list.remove(bullet)
+            score += 1
+            print(score)
     
     all_sprites_list.draw(screen)
     pygame.display.flip()
